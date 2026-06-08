@@ -127,9 +127,18 @@ args = ["--repo", "/absolute/path/to/nodejs/node"]
 ## Development
 
 ```bash
-# Run the test suite
+# Run the test suite (submodule required)
+git submodule update --init
 npm test
 ```
+
+Tests that require a dev binary (`get_node_version`, `run_test`) are automatically skipped unless the binary has been built. To build it:
+
+```bash
+npm run setup  # git submodule update --init + configure + make
+```
+
+CI runs the test suite on Node.js 18, 20, and 22 for every push to `main` and every pull request. A full build with `npm run setup` runs weekly (Sundays) to verify the dev-binary-dependent tests.
 
 ## License
 
