@@ -1,0 +1,16 @@
+{
+  "name": "node-core-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for Node.js core contributors",
+"bin": {
+    "node-core-mcp": "./bin/node-core-mcp.mjs"
+  },
+  "scripts": {
+    "test": "node --test bin/node-core-mcp.test.mjs lib/server.test.mjs lib/tools.test.mjs",
+    "setup": "git submodule update --init && cd node && ./configure --without-intl && make -j4 node"
+  },
+  "author": "Daijiro Wachi",
+  "engines": {
+    "node": ">=18"
+  }
+}
