@@ -1,0 +1,14 @@
+# Node.js source submodule
+node/
+
+# Development
+.github/
+.claude/
+.gitmodules
+
+# Test files
+*.test.mjs
+
+# Misc
+*.log
+*.tgz
