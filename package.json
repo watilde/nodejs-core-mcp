@@ -10,6 +10,7 @@
     "setup": "git submodule update --init && cd node && ./configure --without-intl && make -j4 node"
   },
   "author": "Daijiro Wachi",
+  "license": "MIT",
   "engines": {
     "node": ">=18"
   }
