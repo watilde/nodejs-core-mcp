@@ -1,9 +1,9 @@
 # Contributing to node-core-mcp
 
-* [Code of Conduct](#code-of-conduct)
 * [Setup](#setup)
 * [Running tests](#running-tests)
 * [Adding a tool](#adding-a-tool)
+* [Code of Conduct](#code-of-conduct)
 * [Developer's Certificate of Origin 1.1](#developers-certificate-of-origin)
 
 ## Setup
