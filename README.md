@@ -99,6 +99,7 @@ args = ["--repo", "/absolute/path/to/nodejs/node"]
 | `run_tests` | Run tests matching a pattern via `tools/test.py` |
 | `run_benchmark` | Run a benchmark file with the dev binary |
 | `explain_test_failure` | Parse TAP / `tools/test.py` output and return failures + re-run commands |
+| `verify_change` | Detect changed files via git, rebuild only when required, run the relevant tests, and return parsed results. Skips the rebuild entirely for JS-only changes when the binary was configured with `--node-builtin-modules-path` |
 
 ### Code search
 
@@ -116,12 +117,22 @@ args = ["--repo", "/absolute/path/to/nodejs/node"]
 | `read_doc` | Read a single API doc (e.g. `stream.md`) |
 | `search_docs` | Search `doc/api/`, `doc/contributing/`, and `test/README.md` |
 
+### Jenkins CI
+
+Requires [node-core-utils](https://github.com/nodejs/node-core-utils) (`ncu-ci`) configured with a Jenkins API token, and an authenticated `gh` CLI.
+
+| Tool | Description |
+|------|-------------|
+| `start_ci` | Start a `node-test-pull-request` Jenkins run for a PR via `ncu-ci run` |
+| `get_ci_status` | Fetch parsed Jenkins results for a PR or job URL via `ncu-ci url --json` |
+| `classify_failure` | Answer "known flake or real regression?" by cross-referencing nodejs/node `flaky-test` issues and recent nodejs/reliability reports |
+
 ### PR & subsystem
 
 | Tool | Description |
 |------|-------------|
 | `find_subsystem` | Given changed files, identify the primary subsystem, likely reviewers, and PR labels |
-| `list_relevant_tests` | Given changed files, suggest which test commands to run |
+| `list_relevant_tests` | Given changed files, suggest tests via the `lib/` require graph and a test-name index (not just path heuristics) |
 | `get_pr_metadata` | Fetch labels, CI status, reviews, and commits for a `nodejs/node` PR via `gh` |
 
 ## Development
